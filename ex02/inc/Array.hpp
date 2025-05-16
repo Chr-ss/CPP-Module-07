@@ -6,7 +6,7 @@
 /*   By: christian.rasche <christian.rasche@stud      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/11/09 14:58:12 by christian.r   #+#    #+#                 */
-/*   Updated: 2025/05/15 22:59:13 by christian.r   ########   odam.nl         */
+/*   Updated: 2025/05/16 14:19:53 by crasche       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,22 @@
 template <typename T>
 class Array {
 private:
-	T				*_array;
 	unsigned int	_size;
+	T				*_array;
 public:
+	// Construction with no parameter
 	Array() : _size(0), _array(nullptr) {}
+	// Construction with an unsigned int n
 	Array(unsigned int n) : _size(n), _array(new T[n]) {}
+	// Construction by copy
 	Array(const Array &other) : _size(other._size), _array(new T[other._size])
 	{
 		for (unsigned int i = 0; i < _size; ++i)
 			_array[i] = other._array[i];
 	}
+	// Destructor
 	~Array() { delete[] _array; }
-
+	// Construction by assignment operator
 	Array &operator=(const Array &other)
 	{
 		if (this != &other)
